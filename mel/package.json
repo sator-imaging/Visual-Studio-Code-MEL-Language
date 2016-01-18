@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"publisher": "sator-imaging",
 	"engines": { "vscode": "*" },
+    "repository": "https://github.com/sator-imaging/Visual-Studio-Code-MEL-Language",
 	"contributes": {
 		"languages": [{
 			"id": "mel",
