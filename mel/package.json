@@ -1,0 +1,19 @@
+{
+	"name": "mel",
+	"version": "0.1.0",
+	"publisher": "sator-imaging",
+	"engines": { "vscode": "*" },
+	"contributes": {
+		"languages": [{
+			"id": "mel",
+			"extensions": [ ".mel" ],
+			"aliases": [ "MEL", "Mel", "mel" ],
+			"configuration": "./mel.configuration.json"
+		}],
+		"grammars": [{
+			"language": "mel",
+			"scopeName": "source.mel",
+			"path": "./syntaxes/MEL.plist"
+		}]
+	}
+}
