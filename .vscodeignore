@@ -1,4 +1,7 @@
+# directories
 .git/**
-.gitignore
 .vscode/**
+
+# files
+.git*
 *.vsix
