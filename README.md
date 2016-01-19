@@ -3,4 +3,4 @@ This MEL syntax colorization was ported from [textmate/mel.tmbundle](https://git
 
 ## Install
 Available on Visual Studio Marketplace:
-[MEL: Maya Embedded Language] (https://marketplace.visualstudio.com/items/sator-imaging.mel)
+[MEL -  Maya Embedded Language] (https://marketplace.visualstudio.com/items/sator-imaging.mel)

@@ -1,14 +1,21 @@
 {
 	"name": "mel",
-    "displayName": "MEL: Maya Embedded Language",
+	"version": "0.1.0",
+	"engines": { "vscode": "*" },
+	"publisher": "sator-imaging",
+
+    "displayName": "MEL - Maya Embedded Language",
     "description": "Adding MEL syntax colorization.",
     "categories": [ "Languages" ],
-	"version": "0.1.0",
-	"publisher": "sator-imaging",
-	"engines": { "vscode": "*" },
+    "bugs": {
+        "url": "https://github.com/sator-imaging/Visual-Studio-Code-MEL-Language/issues"
+    },
     "repository": { "type": "git",
                     "url": "https://github.com/sator-imaging/Visual-Studio-Code-MEL-Language.git"
     },
+    "license": "https://github.com/textmate/mel.tmbundle",
+    "homepage": "http://www.sator-imaging.com/",
+
 	"contributes": {
 		"languages": [{
 			"id": "mel",
