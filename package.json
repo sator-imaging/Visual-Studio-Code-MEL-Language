@@ -1,32 +1,35 @@
 {
-	"name": "mel",
-	"version": "0.1.0",
-	"engines": { "vscode": "*" },
-	"publisher": "sator-imaging",
+  "name": "mel",
+  "version": "0.1.1",
+  "engines": { "vscode": "*" },
+  "publisher": "sator-imaging",
 
-    "displayName": "MEL - Maya Embedded Language",
-    "description": "Adding MEL syntax colorization.",
-    "categories": [ "Languages" ],
-    "bugs": {
-        "url": "https://github.com/sator-imaging/Visual-Studio-Code-MEL-Language/issues"
-    },
-    "repository": { "type": "git",
-                    "url": "https://github.com/sator-imaging/Visual-Studio-Code-MEL-Language.git"
-    },
-    "license": "https://github.com/textmate/mel.tmbundle",
-    "homepage": "http://www.sator-imaging.com/",
+  "displayName": "MEL - Maya Embedded Language",
+  "description": "Adding MEL syntax colorization.",
+  "categories": [ "Languages" ],
+  "icon": "./icon.png",
 
-	"contributes": {
-		"languages": [{
-			"id": "mel",
-			"extensions": [ ".mel" ],
-			"aliases": [ "MEL", "Mel", "mel" ],
-			"configuration": "./mel.configuration.json"
-		}],
-		"grammars": [{
-			"language": "mel",
-			"scopeName": "source.mel",
-			"path": "./syntaxes/MEL.plist"
-		}]
-	}
+  "homepage": "http://www.sator-imaging.com/",
+  "license": "https://github.com/textmate/mel.tmbundle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sator-imaging/Visual-Studio-Code-MEL-Language.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sator-imaging/Visual-Studio-Code-MEL-Language/issues"
+  },
+
+  "contributes": {
+    "languages": [{
+      "id": "mel",
+      "extensions": [ ".mel" ],
+      "aliases": [ "MEL", "Mel", "mel" ],
+      "configuration": "./mel.configuration.json"
+    }],
+    "grammars": [{
+      "language": "mel",
+      "scopeName": "source.mel",
+      "path": "./syntaxes/MEL.plist"
+    }]
+  }
 }
