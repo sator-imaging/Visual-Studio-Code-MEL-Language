@@ -7,7 +7,7 @@
   "displayName": "MEL - Maya Embedded Language",
   "description": "Adding MEL syntax colorization.",
   "categories": [ "Languages" ],
-  "icon": "./icon.png",
+  "icon": "icon.png",
 
   "homepage": "http://www.sator-imaging.com/",
   "license": "https://github.com/textmate/mel.tmbundle",
