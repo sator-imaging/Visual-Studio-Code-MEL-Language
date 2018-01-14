@@ -1,11 +1,11 @@
 {
   "name": "mel",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": { "vscode": "*" },
   "publisher": "sator-imaging",
 
   "displayName": "MEL - Maya Embedded Language",
-  "description": "Adding MEL syntax colorization.",
+  "description": "Adding MEL language support.",
   "categories": [ "Languages" ],
   "icon": "icon.png",
 
@@ -22,14 +22,14 @@
   "contributes": {
     "languages": [{
       "id": "mel",
-      "extensions": [ ".mel" ],
+      "extensions": [ ".mel", ".ma" ],
       "aliases": [ "MEL", "Mel", "mel" ],
       "configuration": "./mel.configuration.json"
     }],
     "grammars": [{
       "language": "mel",
       "scopeName": "source.mel",
-      "path": "./syntaxes/MEL.plist"
+      "path": "./syntaxes/MEL.tmLanguage"
     }]
   }
 }

@@ -4,7 +4,8 @@
 <dict>
 	<key>fileTypes</key>
 	<array>
-		<string>as</string>
+		<string>mel</string>
+		<string>ma</string>
 	</array>
 	<key>keyEquivalent</key>
 	<string>^~M</string>
