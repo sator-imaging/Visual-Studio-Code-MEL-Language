@@ -7,15 +7,15 @@ on:
   workflow_dispatch:
 
 env:
-  DIRNAME: 'VSCode-MEL'
-  FILENAME: 'README.md'
+  DST_DIRNAME: 'VSCode-MEL'
+  SRC_FILEPATH: 'README.md'
   SRC_DIR: './current'
   DST_DIR: './openman'
   SRC_REPO_NAME: "${{ github.event.repository.name }}"
   DST_REPO: 'SatorImaging/OpenManual'
   DST_BRANCH: 'master'
-  PULLREQ_TITLE: "CopyToOpenManual"
-  PULLREQ_MESSAGE: "CopyToOpenManual"
+  PULLREQ_TITLE: "GitHub Action: ${{ github.action }}"
+  PULLREQ_MESSAGE: "${{ github.action_repository }}"
 
 
 jobs:
@@ -33,15 +33,15 @@ jobs:
 
       - name: Commit & PR
         run: |
-          git config --global user.name "GitHub Actions"
+          git config --global user.name "${{ github.actor }}"
           git config --global user.email "devnull@inter.net"
           git config --global url."https://${{ secrets.DST_REPO_TKN}}@github.com/".insteadOf "https://github.com/"
 
           cd "${DST_DIR}"
           git checkout -b "${SRC_REPO_NAME}"
 
-          mkdir "${DIRNAME}"
-          cp -f "../${SRC_DIR}/${FILENAME}" "${DIRNAME}/${FILENAME}"
+          mkdir "${DST_DIRNAME}"
+          cp -f "../${SRC_DIR}/${SRC_FILEPATH}" "${DST_DIRNAME}/${SRC_FILEPATH}"
 
           git add "."
           git commit -am `date +%s`
