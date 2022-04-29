@@ -24,10 +24,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          persist-credentials: false
           path: "${{ env.SRC_DIR }}"
 
       - uses: actions/checkout@v3
         with:
+          persist-credentials: false
           repository: "${{ env.DST_REPO }}"
           path: "${{ env.DST_DIR }}"
 
