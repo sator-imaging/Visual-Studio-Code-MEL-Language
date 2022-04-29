@@ -33,6 +33,9 @@ jobs:
           repository: "${{ env.DST_REPO }}"
           path: "${{ env.DST_DIR }}"
 
+      - name: Update Env
+        run: echo "SRC_REPO_NAME::${SRC_REPO_NAME}---$(date +'%Y-%m-%d--%H-%M-%S')" >> $GITHUB_ENV
+
       - name: Commit & PR
         run: |
           git config --global user.name "${{ github.actor }}"
@@ -40,7 +43,7 @@ jobs:
           git config --global url."https://${{ secrets.DST_REPO_TKN}}@github.com/".insteadOf "https://github.com/"
 
           cd "${DST_DIR}"
-          git checkout -b "${SRC_REPO_NAME}-`date +%s`"
+          git checkout -b "${SRC_REPO_NAME}"
 
           mkdir "${DST_DIRNAME}"
           cp -f "../${SRC_DIR}/${SRC_FILEPATH}" "${DST_DIRNAME}/${SRC_FILEPATH}"
