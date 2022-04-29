@@ -47,7 +47,7 @@ jobs:
 
           git add "."
           git commit -am "`date`"
-          git pull origin
+          git pull origin "${SRC_REPO_NAME}"
           git push origin HEAD
 
           curl -X POST \
