@@ -25,12 +25,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: "${{ env.SRC_DIR }}"
+
       - uses: actions/checkout@v3
         with:
           repository: "${{ env.DST_REPO }}"
           path: "${{ env.DST_DIR }}"
 
-      - name: Create pull-request.
+      - name: Commit
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "devnull@inter.net"
@@ -43,10 +44,14 @@ jobs:
 
           git add "."
           git commit -am `date +%s`
+
+      - name: Pull request
+        env:
+          GITHUB_TOKEN: ${{ secrets.DST_REPO_TKN }}
+        run: |
           git push origin HEAD
 
           curl -X POST \
             -H 'Accept: application/vnd.github.v3+json' \
-            -H 'Authorization: token ${{ secrets.DST_REPO_TKN }}' \
             https://api.github.com/repos/${DST_REPO}/pulls \
             -d "{ \"title\":\"${PULLREQ_TITLE}\", \"body\":\"${PULLREQ_MESSAGE}\", \"head\":\"${SRC_REPO_NAME}\", \"base\":\"${DST_BRANCH}\" }'
