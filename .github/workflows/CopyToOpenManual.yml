@@ -33,7 +33,7 @@ jobs:
       - name: Create pull-request.
         run: |
           mkdir "${DST_DIR}/${DIRNAME}"
-          copy "${SRC_DIR}/${FILENAME}" "${DST_DIR}/${DIRNAME}/${FILENAME}"
+          cp "${SRC_DIR}/${FILENAME}" "${DST_DIR}/${DIRNAME}/${FILENAME}"
           ls .
           cd "${DST_DIR}"
           
