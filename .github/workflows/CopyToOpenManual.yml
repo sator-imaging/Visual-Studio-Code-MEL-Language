@@ -34,7 +34,7 @@ jobs:
           path: "${{ env.DST_DIR }}"
 
       - name: Update Env
-        run: echo "PR_BRANCH::${SRC_REPO_NAME}---$(date +'%Y-%m-%d--%H-%M-%S')" >> $GITHUB_ENV
+        run: echo "PR_BRANCH=${SRC_REPO_NAME}---$(date +'%Y-%m-%d--%H-%M-%S')" >> $GITHUB_ENV
 
       - name: Commit & PR
         run: |
