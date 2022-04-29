@@ -16,12 +16,3 @@ jobs:
           output-branch: 'master'  # branch name to create pull request
           output-repo: 'SatorImaging/OpenManual'
           git-token: ${{ secrets.Deploy2OM }}
-          
-          # optional parameters and default values
-          commit-message-prefix: '[actions]'
-          output-directory: "${{ github.event.repository.name }}"   # copy file into sub directory
-          pr-branch-prefix: "${{ github.event.repository.name }}"   # branch name prefix followed by date and time
-          pr-title: "GitHub Actions: ${{ github.workflow }}"
-          pr-message: ''
-          git-name: "${{ github.actor }}"
-          git-email: '16752340+sator-imaging@users.noreply.github.com'  # devnull@inter.net by default.
