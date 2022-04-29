@@ -46,7 +46,7 @@ jobs:
           cp -f "../${SRC_DIR}/${SRC_FILEPATH}" "${DST_DIRNAME}/${SRC_FILEPATH}"
 
           git add "."
-          git commit -am `date`
+          git commit -am "`date`"
           git push origin HEAD
 
           curl -X POST \
