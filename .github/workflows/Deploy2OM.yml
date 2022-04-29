@@ -1,19 +1,21 @@
-name: CopyToOpenManual
+name: Deploy2OM
 
 on:
   push:
     branches: [ master ]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+
 env:
-  DST_DIRNAME: "${{ github.event.repository.name }}"
-  SRC_FILEPATH: 'README.md'
-  SRC_DIR: './current'
-  DST_DIR: './openman'
-  SRC_REPO_NAME: "${{ github.event.repository.name }}"
-  DST_REPO: 'SatorImaging/OpenManual'
   DST_BRANCH: 'master'
+  DST_REPO: 'SatorImaging/OpenManual'
+  DST_DIRNAME: "${{ github.event.repository.name }}"
+  SRC_REPO_NAME: "${{ github.event.repository.name }}"
+  SRC_FILEPATH: 'README.md'
+  TMP_SRCDIR: './source'
+  TMP_DSTDIR: './dest'
   PULLREQ_TITLE: "GitHub Actions: ${{ github.workflow }}"
   PULLREQ_MESSAGE: ""
 
@@ -25,13 +27,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           persist-credentials: false
-          path: "${{ env.SRC_DIR }}"
+          path: "${{ env.TMP_SRCDIR }}"
 
       - uses: actions/checkout@v3
         with:
           persist-credentials: false
           repository: "${{ env.DST_REPO }}"
-          path: "${{ env.DST_DIR }}"
+          path: "${{ env.TMP_DSTDIR }}"
 
       - name: Update Env
         run: echo "PR_BRANCH=${SRC_REPO_NAME}---$(date +'%Y-%m-%d--%H-%M-%S')" >> $GITHUB_ENV
@@ -42,11 +44,11 @@ jobs:
           git config --global user.email "devnull@inter.net"
           git config --global url."https://${{ secrets.DST_REPO_TKN}}@github.com/".insteadOf "https://github.com/"
 
-          cd "${DST_DIR}"
+          cd "${TMP_DSTDIR}"
           git checkout -b "${PR_BRANCH}"
 
           mkdir "${DST_DIRNAME}"
-          mv -f --no-target-directory "../${SRC_DIR}/${SRC_FILEPATH}" "${DST_DIRNAME}/${SRC_FILEPATH}"
+          mv -f --no-target-directory "../${TMP_SRCDIR}/${SRC_FILEPATH}" "${DST_DIRNAME}"
 
           git add "."
           git commit -am "`date`"
