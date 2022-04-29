@@ -14,8 +14,8 @@ env:
   SRC_REPO_NAME: "${{ github.event.repository.name }}"
   DST_REPO: 'SatorImaging/OpenManual'
   DST_BRANCH: 'master'
-  PULLREQ_TITLE: "${{ env.GITHUB_JOB }}"
-  PULLREQ_MESSAGE: "${{ env.GITHUB_JOB_PATH }}"
+  PULLREQ_TITLE: "CopyToOpenManual"
+  PULLREQ_MESSAGE: "CopyToOpenManual"
 
 
 jobs:
