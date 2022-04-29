@@ -48,7 +48,7 @@ jobs:
           git checkout -b "${PR_BRANCH}"
 
           mkdir "${DST_DIRNAME}"
-          mv -f --no-target-directory "../${TMP_SRCDIR}/${SRC_FILEPATH}" "${DST_DIRNAME}"
+          mv -f "../${TMP_SRCDIR}/${SRC_FILEPATH}" "${DST_DIRNAME}"
 
           git add "."
           git commit -am "`date`"
