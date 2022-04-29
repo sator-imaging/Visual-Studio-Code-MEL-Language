@@ -47,6 +47,7 @@ jobs:
 
           git add "."
           git commit -am "`date`"
+          git pull
           git push origin HEAD
 
           curl -X POST \
