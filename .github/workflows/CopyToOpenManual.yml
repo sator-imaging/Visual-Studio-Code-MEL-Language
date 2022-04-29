@@ -22,12 +22,9 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout current repository
       - uses: actions/checkout@v3
         with:
           path: "${SRC_DIR}"
-
-      - name: Checkout OpenManual
       - uses: actions/checkout@v3
         with:
           repository: "${DST_REPO}"
