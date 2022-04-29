@@ -35,7 +35,7 @@ jobs:
           repository: "${{ env.DST_REPO }}"
           path: "${{ env.TMP_DSTDIR }}"
 
-      - uses: sator-imaging/Deploy-to-Another-Repository@current
+      - uses: sator-imaging/Deploy-to-Another-Repository@v1
         with:
           GITHUB_TOKEN: ${{ secrets.DST_REPO_TKN }}
           target-filepath: 'README.md'
