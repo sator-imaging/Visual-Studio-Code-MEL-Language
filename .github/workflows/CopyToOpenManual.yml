@@ -36,8 +36,9 @@ jobs:
           cp "${SRC_DIR}/${FILENAME}" "${DST_DIR}/${DIRNAME}/${FILENAME}"
           ls .
           cd "${DST_DIR}"
-          
-          git branch -b "${SRC_REPO_NAME}"
+
+          git checkout -b "${SRC_REPO_NAME}"
+          git branch "${SRC_REPO_NAME}"
           git add "."
           git commit -am `date +%s`
           git push origin HEAD
