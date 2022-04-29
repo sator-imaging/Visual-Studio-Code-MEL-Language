@@ -40,14 +40,13 @@ jobs:
           git config --global url."https://${{ secrets.DST_REPO_TKN}}@github.com/".insteadOf "https://github.com/"
 
           cd "${DST_DIR}"
-          git checkout -b "${SRC_REPO_NAME}"
+          git checkout -b "${SRC_REPO_NAME}-`date +%s`"
 
           mkdir "${DST_DIRNAME}"
           cp -f "../${SRC_DIR}/${SRC_FILEPATH}" "${DST_DIRNAME}/${SRC_FILEPATH}"
 
           git add "."
           git commit -am "`date`"
-          git pull origin "${SRC_REPO_NAME}"
           git push origin HEAD
 
           curl -X POST \
