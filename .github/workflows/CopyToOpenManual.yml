@@ -32,13 +32,12 @@ jobs:
 
       - name: Create pull-request.
         run: |
-          mkdir "${DST_DIR}/${DIRNAME}"
-          cp "${SRC_DIR}/${FILENAME}" "${DST_DIR}/${DIRNAME}/${FILENAME}"
-          ls .
           cd "${DST_DIR}"
-
           git checkout -b "${SRC_REPO_NAME}"
-          git branch "${SRC_REPO_NAME}"
+
+          mkdir "${DIRNAME}"
+          cp -f "../${SRC_DIR}/${FILENAME}" "${DIRNAME}/${FILENAME}"
+
           git add "."
           git commit -am `date +%s`
           git push origin HEAD
