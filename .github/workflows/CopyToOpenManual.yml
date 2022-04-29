@@ -27,13 +27,14 @@ jobs:
           path: "${SRC_DIR}"
       - uses: actions/checkout@v3
         with:
-          repository: "${DST_REPO}"
+          repository: ${DST_REPO}
           path: "${DST_DIR}"
 
       - name: Create pull-request.
         run: |
           mkdir "${DST_DIR}/${DIRNAME}"
           copy "${SRC_DIR}/${FILENAME}" "${DST_DIR}/${DIRNAME}/${FILENAME}"
+          ls .
           cd "${DST_DIR}"
           
           git branch -b "${SRC_REPO_NAME}"
