@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  DST_DIRNAME: 'VSCode-MEL'
+  DST_DIRNAME: "${{ github.event.repository.name }}"
   SRC_FILEPATH: 'README.md'
   SRC_DIR: './current'
   DST_DIR: './openman'
