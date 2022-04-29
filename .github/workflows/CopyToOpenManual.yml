@@ -11,7 +11,7 @@ env:
   FILENAME: 'README.md'
   SRC_DIR: './current'
   DST_DIR: './openman'
-  SRC_REPO: "${{ github.event.repository.name }}"
+  SRC_REPO_NAME: "${{ github.event.repository.name }}"
   DST_REPO: 'SatorImaging/OpenManual'
   DST_BRANCH: 'master'
   PULLREQ_TITLE: 'bot: Copy to OpenManual'
@@ -27,21 +27,19 @@ jobs:
         with:
           path: "${SRC_DIR}"
 
-      # Runs a single command using the runners shell
       - name: Checkout OpenManual
       - uses: actions/checkout@v3
         with:
           repository: "${DST_REPO}"
           path: "${DST_DIR}"
 
-      # Runs a set of commands using the runners shell
       - name: Create pull-request.
         run: |
           mkdir "${DST_DIR}/${DIRNAME}"
           copy "${SRC_DIR}/${FILENAME}" "${DST_DIR}/${DIRNAME}/${FILENAME}"
           cd "${DST_DIR}"
           
-          git branch -b "${SRC_REPO}"
+          git branch -b "${SRC_REPO_NAME}"
           git add "."
           git commit -am `date +%s`
           git push origin HEAD
@@ -49,5 +47,5 @@ jobs:
           curl -X POST \
             -H 'Accept: application/vnd.github.v3+json'
             'https://api.github.com/repos/${DST_REPO}/pulls'
-            -d "{ \"title\":\"${PULLREQ_TITLE}\", \"body\":\"${PULLREQ_MESSAGE}\", \"head\":\"${SRC_REPO}\", \"base\":\"${DST_BRANCH}\" }'
+            -d "{ \"title\":\"${PULLREQ_TITLE}\", \"body\":\"${PULLREQ_MESSAGE}\", \"head\":\"${SRC_REPO_NAME}\", \"base\":\"${DST_BRANCH}\" }'
             
