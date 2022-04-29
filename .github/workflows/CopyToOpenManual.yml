@@ -55,4 +55,4 @@ jobs:
           curl -X POST \
             -H 'Accept: application/vnd.github.v3+json' \
             "https://${{ secrets.DST_REPO_TKN}}@api.github.com/repos/${DST_REPO}/pulls" \
-            -d "{ 'title':'${PULLREQ_TITLE}', 'body':'${PULLREQ_MESSAGE}', 'head':'${{ github.actor }}:${PR_BRANCH}', 'base':'${DST_BRANCH}' }"
+            -d "{ \"title\":\"${PULLREQ_TITLE}\", \"body\":\"${PULLREQ_MESSAGE}\", \"head\":\"${{ github.actor }}:${PR_BRANCH}\", \"base\":\"${DST_BRANCH}\" }"
