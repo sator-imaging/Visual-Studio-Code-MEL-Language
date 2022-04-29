@@ -35,26 +35,9 @@ jobs:
           repository: "${{ env.DST_REPO }}"
           path: "${{ env.TMP_DSTDIR }}"
 
-      - name: Update Env
-        run: echo "PR_BRANCH=${SRC_REPO_NAME}---$(date +'%Y-%m-%d--%H-%M-%S')" >> $GITHUB_ENV
-
-      - name: Commit & PR
-        run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "devnull@inter.net"
-          git config --global url."https://${{ secrets.DST_REPO_TKN}}@github.com/".insteadOf "https://github.com/"
-
-          cd "${TMP_DSTDIR}"
-          git checkout -b "${PR_BRANCH}"
-
-          mkdir "${DST_DIRNAME}"
-          mv -f "../${TMP_SRCDIR}/${SRC_FILEPATH}" "${DST_DIRNAME}"
-
-          git add "."
-          git commit -am "`date`"
-          git push origin HEAD
-
-          curl -X POST \
-            -H 'Accept: application/vnd.github.v3+json' \
-            "https://${{ secrets.DST_REPO_TKN}}@api.github.com/repos/${DST_REPO}/pulls" \
-            -d "{ \"title\":\"${PULLREQ_TITLE}\", \"body\":\"${PULLREQ_MESSAGE}\", \"head\":\"${PR_BRANCH}\", \"base\":\"${DST_BRANCH}\" }"
+      - uses: sator-imaging/Deploy-to-Another-Repository@current
+        with:
+          target-filepath: 'README.md'
+          output-repo: 'SatorImaging/OpenManual'
+          output-branch: 'master'
+          git-token: ${{ secrets.DST_REPO_TKN }}
