@@ -4,18 +4,24 @@ on:
   push:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
       - uses: sator-imaging/Copy-to-Another-Repository@v1
         with:
-          target-filepath: 'README.md'
+
+          # required parameters
+          target-filepath: 'README.md'     # file path to copy
+          output-branch: 'master'  # branch name to create pull request
           output-repo: 'SatorImaging/OpenManual'
-          output-branch: 'master'
-          git-token: ${{ secrets.DST_REPO_TKN }}
-          git-email: '16752340+sator-imaging@users.noreply.github.com'
+          git-token: ${{ secrets.Deploy2OM }}
+          
+          # optional parameters and default values
+          commit-message-prefix: '[actions]'
+          output-directory: "${{ github.event.repository.name }}"   # copy file into sub directory
+          pr-branch-prefix: "${{ github.event.repository.name }}"   # branch name prefix followed by date and time
+          pr-title: "GitHub Actions: ${{ github.workflow }}"
+          pr-message: ''
+          git-name: "${{ github.actor }}"
+          git-email: '16752340+sator-imaging@users.noreply.github.com'  # devnull@inter.net by default.
