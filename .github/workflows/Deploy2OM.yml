@@ -37,6 +37,7 @@ jobs:
 
       - uses: sator-imaging/Deploy-to-Another-Repository@current
         with:
+          GITHUB_TOKEN: ${{ secrets.DST_REPO_TKN }}
           target-filepath: 'README.md'
           output-repo: 'SatorImaging/OpenManual'
           output-branch: 'master'
