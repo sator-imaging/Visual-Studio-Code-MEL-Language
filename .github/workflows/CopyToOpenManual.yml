@@ -14,8 +14,8 @@ env:
   SRC_REPO_NAME: "${{ github.event.repository.name }}"
   DST_REPO: 'SatorImaging/OpenManual'
   DST_BRANCH: 'master'
-  PULLREQ_TITLE: "GitHub Action: ${{ github.action }}"
-  PULLREQ_MESSAGE: "${{ github.action_repository }}"
+  PULLREQ_TITLE: "GitHub Actions"
+  PULLREQ_MESSAGE: "${{ github.workflow }}"
 
 
 jobs:
