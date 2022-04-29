@@ -32,6 +32,9 @@ jobs:
 
       - name: Create pull-request.
         run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "devnull@inter.net"
+
           cd "${DST_DIR}"
           git checkout -b "${SRC_REPO_NAME}"
 
