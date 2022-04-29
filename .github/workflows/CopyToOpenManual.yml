@@ -32,11 +32,10 @@ jobs:
           path: "${{ env.DST_DIR }}"
 
       - name: Commit & PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.DST_REPO_TKN }}
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "devnull@inter.net"
+          git config --global url."https://${{ secrets.DST_REPO_TKN}}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 
           cd "${DST_DIR}"
           git checkout -b "${SRC_REPO_NAME}"
@@ -50,5 +49,5 @@ jobs:
 
           curl -X POST \
             -H 'Accept: application/vnd.github.v3+json' \
-            https://api.github.com/repos/${DST_REPO}/pulls \
+            'https://${{ secrets.DST_REPO_TKN}}:x-oauth-basic@api.github.com/repos/${DST_REPO}/pulls' \
             -d "{ \"title\":\"${PULLREQ_TITLE}\", \"body\":\"${PULLREQ_MESSAGE}\", \"head\":\"${SRC_REPO_NAME}\", \"base\":\"${DST_BRANCH}\" }'
