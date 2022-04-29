@@ -31,7 +31,9 @@ jobs:
           repository: "${{ env.DST_REPO }}"
           path: "${{ env.DST_DIR }}"
 
-      - name: Commit
+      - name: Commit & PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.DST_REPO_TKN }}
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "devnull@inter.net"
@@ -44,11 +46,6 @@ jobs:
 
           git add "."
           git commit -am `date +%s`
-
-      - name: Pull request
-        env:
-          GITHUB_TOKEN: ${{ secrets.DST_REPO_TKN }}
-        run: |
           git push origin HEAD
 
           curl -X POST \
