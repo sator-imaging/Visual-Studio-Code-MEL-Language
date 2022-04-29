@@ -14,8 +14,8 @@ env:
   SRC_REPO_NAME: "${{ github.event.repository.name }}"
   DST_REPO: 'SatorImaging/OpenManual'
   DST_BRANCH: 'master'
-  PULLREQ_TITLE: "${{ GITHUB_JOB }}"
-  PULLREQ_MESSAGE: "${{ GITHUB_JOB_PATH }}"
+  PULLREQ_TITLE: "${GITHUB_JOB}"
+  PULLREQ_MESSAGE: "${GITHUB_JOB_PATH}"
 
 
 jobs:
@@ -24,11 +24,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          path: "${{ SRC_DIR }}"
+          path: "${SRC_DIR}"
       - uses: actions/checkout@v3
         with:
-          repository: "${{ DST_REPO }}"
-          path: "${{ DST_DIR }}"
+          repository: "${DST_REPO}"
+          path: "${DST_DIR}"
 
       - name: Create pull-request.
         run: |
