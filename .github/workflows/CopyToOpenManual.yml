@@ -34,7 +34,7 @@ jobs:
           path: "${{ env.DST_DIR }}"
 
       - name: Update Env
-        run: echo "SRC_REPO_NAME::${SRC_REPO_NAME}---$(date +'%Y-%m-%d--%H-%M-%S')" >> $GITHUB_ENV
+        run: echo "PR_BRANCH::${SRC_REPO_NAME}---$(date +'%Y-%m-%d--%H-%M-%S')" >> $GITHUB_ENV
 
       - name: Commit & PR
         run: |
@@ -43,7 +43,7 @@ jobs:
           git config --global url."https://${{ secrets.DST_REPO_TKN}}@github.com/".insteadOf "https://github.com/"
 
           cd "${DST_DIR}"
-          git checkout -b "${SRC_REPO_NAME}"
+          git checkout -b "${PR_BRANCH}"
 
           mkdir "${DST_DIRNAME}"
           cp -f "../${SRC_DIR}/${SRC_FILEPATH}" "${DST_DIRNAME}/${SRC_FILEPATH}"
@@ -55,4 +55,4 @@ jobs:
           curl -X POST \
             -H 'Accept: application/vnd.github.v3+json' \
             'https://${{ secrets.DST_REPO_TKN}}@api.github.com/repos/${DST_REPO}/pulls' \
-            -d "{ \"title\":\"${PULLREQ_TITLE}\", \"body\":\"${PULLREQ_MESSAGE}\", \"head\":\"${SRC_REPO_NAME}\", \"base\":\"${DST_BRANCH}\" }"
+            -d "{ \"title\":\"${PULLREQ_TITLE}\", \"body\":\"${PULLREQ_MESSAGE}\", \"head\":\"${PR_BRANCH}\", \"base\":\"${DST_BRANCH}\" }"
